@@ -4,7 +4,7 @@ import 'package:coureses_platform/core/widgets/custom_button.dart';
 import 'package:coureses_platform/features/course_details/data/repo.dart';
 import 'package:coureses_platform/features/course_details/logic/cubit.dart';
 import 'package:coureses_platform/features/course_details/logic/state.dart';
-import 'package:coureses_platform/features/home/data/models/course_model.dart';
+import 'package:coureses_platform/core/models/course_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

@@ -1,4 +1,4 @@
-import 'package:coureses_platform/features/home/data/models/course_model.dart';
+import 'package:coureses_platform/core/models/course_model.dart';
 
 abstract class HomeState {}
 

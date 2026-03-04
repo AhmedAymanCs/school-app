@@ -1,6 +1,8 @@
+import 'package:coureses_platform/core/constants/app_constants.dart';
 import 'package:coureses_platform/features/auth/data/repo/auth_repo/auth_repo.dart';
 import 'package:coureses_platform/features/auth/presentation/cubit/auth_cubit/auth_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final AuthRepo authRepo;
@@ -9,10 +11,13 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signin({required String email, required String password}) async {
     emit(LoginLoadingState());
     final res = await authRepo.signin(email: email, password: password);
-    res.fold(
-      (error) => emit(LoginErrorState(errmsg: error.toString())),
-      (success) => emit(LoginSuccessState()),
-    );
+    res.fold((error) => emit(LoginErrorState(errmsg: error.toString())), (
+      id,
+    ) async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString(AppConstants.cacheIDKey, id);
+      emit(LoginSuccessState());
+    });
   }
 
   Future<void> signup({

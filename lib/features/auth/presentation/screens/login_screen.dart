@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
           if (state is LoginSuccessState) {
             Navigator.pushNamedAndRemoveUntil(
               context,
-              Routes.homescreen,
+              Routes.layout,
               (_) => false,
             );
           }

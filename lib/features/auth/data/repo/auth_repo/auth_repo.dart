@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepo {
   SupabaseClient supabase = Supabase.instance.client;
-  Future<Either<String, void>> signin({
+  Future<Either<String, String>> signin({
     required String email,
     required String password,
   }) async {
@@ -12,12 +14,22 @@ class AuthRepo {
         email: email,
         password: password,
       );
-      return right(null);
+      return right(res.user!.id);
     } on AuthApiException catch (e) {
-      if (e.statusCode == 400) {
-        return left('User not found or wrong password');
+      switch (e.statusCode) {
+        case '400':
+          return left('Invalid email or password');
+        case '422':
+          return left('Invalid email format');
+        case '429':
+          return left('Too many attempts, please try again later');
+        case '500':
+          return left('Server error, please try again');
+        default:
+          return left('Authentication error: ${e.statusCode}');
       }
-      return left(" status code :${e.statusCode}");
+    } on SocketException {
+      return left('No internet connection');
     } catch (e) {
       return left(e.toString());
     }

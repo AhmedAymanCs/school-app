@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Courses Platform',
       onGenerateRoute: AppRouter.generateRoute,
-      initialRoute: Routes.loginscreen,
+      initialRoute: Routes.splashscreen,
     );
   }
 }
