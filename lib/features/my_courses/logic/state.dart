@@ -1,3 +1,5 @@
+import 'package:coureses_platform/core/models/course_model.dart';
+
 abstract class MyCoursesState {}
 
 class MyCoursesInitial extends MyCoursesState {}
@@ -10,5 +12,6 @@ class MyCoursesError extends MyCoursesState {
 }
 
 class MyCoursesSuccess extends MyCoursesState {
-  MyCoursesSuccess();
+  final List<CourseModel> myCourses;
+  MyCoursesSuccess(this.myCourses);
 }

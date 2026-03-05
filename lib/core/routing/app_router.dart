@@ -1,6 +1,8 @@
 import 'package:coureses_platform/core/routing/routes.dart';
 import 'package:coureses_platform/features/auth/presentation/screens/login_screen.dart';
 import 'package:coureses_platform/features/auth/presentation/screens/signup_screen.dart';
+import 'package:coureses_platform/features/content/presentation/content_screen.dart';
+import 'package:coureses_platform/features/content/presentation/video_viwer/video_viewer.dart';
 import 'package:coureses_platform/features/layout/presentation/screens/splash_screen.dart';
 import 'package:coureses_platform/features/course_details/presentation/screens/course_details.dart';
 import 'package:coureses_platform/core/models/course_model.dart';
@@ -24,6 +26,14 @@ class AppRouter {
       case Routes.coursedetails:
         final course = settings.arguments as CourseModel;
         return MaterialPageRoute(builder: (_) => CourseDetails(course: course));
+      case Routes.videoviewer:
+        final url = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => VideoViwer(videoUrl: url));
+      case Routes.content:
+        final courseId = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => ContentPage(courseId: courseId),
+        );
 
       default:
         return MaterialPageRoute(

@@ -16,9 +16,11 @@ class LayoutBottomNavbar extends StatelessWidget {
       child: BlocBuilder<LayoutCubit, LayoutBottomNavBarState>(
         builder: (context, state) {
           return Scaffold(
-            body: context
-                .read<LayoutCubit>()
-                .screens[context.read<LayoutCubit>().currentIndex],
+            body: SafeArea(
+              child: context
+                  .read<LayoutCubit>()
+                  .screens[context.read<LayoutCubit>().currentIndex],
+            ),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: context.read<LayoutCubit>().currentIndex,
               onTap: (index) {

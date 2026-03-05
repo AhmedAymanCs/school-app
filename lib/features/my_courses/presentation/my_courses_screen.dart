@@ -1,3 +1,4 @@
+import 'package:coureses_platform/core/routing/routes.dart';
 import 'package:coureses_platform/features/my_courses/data/repo/repo.dart';
 import 'package:coureses_platform/features/my_courses/logic/cubit.dart';
 import 'package:coureses_platform/features/my_courses/logic/state.dart';
@@ -14,24 +15,32 @@ class MyCoursesPage extends StatelessWidget {
       create: (context) => MyCoursesCubit(MyCoursesRepo())..getMyCourses(),
       child: BlocBuilder<MyCoursesCubit, MyCoursesState>(
         builder: (context, state) {
-          final cubit = context.read<MyCoursesCubit>();
-          return state is MyCoursesLoading
-              ? const Center(child: CircularProgressIndicator())
-              : cubit.myCourses.isEmpty
-              ? Center(child: const Text('No Enrolled Courses'))
-              : ListView.builder(
-                  itemCount: cubit.myCourses.length,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  itemBuilder: (context, index) {
-                    final lesson = cubit.myCourses[index];
-                    return LessonCard(
-                      image: lesson.image,
-                      title: lesson.title,
-                      subtitle: lesson.description,
-                      onTap: () {},
+          if (state is MyCoursesError) {
+            return Center(child: Text(state.error));
+          }
+          if (state is MyCoursesSuccess) {
+            return ListView.builder(
+              itemCount: state.myCourses.length,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              itemBuilder: (context, index) {
+                final lesson = state.myCourses[index];
+                return LessonCard(
+                  image: lesson.image,
+                  title: lesson.title,
+                  subtitle: lesson.description,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      Routes.content,
+                      arguments: lesson.id,
                     );
+                    print('Tapped on course : ${lesson.title}');
                   },
                 );
+              },
+            );
+          }
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );

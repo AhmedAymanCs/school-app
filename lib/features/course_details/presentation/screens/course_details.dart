@@ -144,7 +144,7 @@ class CourseDetails extends StatelessWidget {
                                   height: 1.6,
                                 ),
                               ),
-                              SizedBox(height: size.height * 0.05),
+                              SizedBox(height: size.height * 0.3),
                               Center(
                                 child: SizedBox(
                                   width: size.width * (isTablet ? 0.45 : 0.70),
@@ -177,7 +177,6 @@ class CourseDetails extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 30),
                             ],
                           ),
                         ),

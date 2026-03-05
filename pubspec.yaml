@@ -39,6 +39,8 @@ dependencies:
   dartz: ^0.10.1
   supabase_flutter: ^2.12.0
   flutter_dotenv: ^5.1.0
+  chewie: ^1.13.0
+  video_player: ^2.11.0
 
 dev_dependencies:
   flutter_test:

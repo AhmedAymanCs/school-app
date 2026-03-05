@@ -23,7 +23,7 @@ class CourseModel {
       image:
           data['image'] ??
           'https://www.svgrepo.com/show/508699/landscape-placeholder.svg',
-      price: (data['price'] as num).toDouble(),
+      price: data['price'] == null ? 0 : (data['price'] as num).toDouble(),
     );
   }
 
