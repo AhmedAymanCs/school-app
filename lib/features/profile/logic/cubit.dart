@@ -21,16 +21,16 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> logout(BuildContext context) async {
     emit(ProfileState(status: ProfileStatus.loading));
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      Routes.loginscreen,
+      (route) => false,
+    );
     final res = await _profileRepo.logout();
     res.fold(
       (error) => emit(ProfileState(status: ProfileStatus.error, error: error)),
       (_) {
         emit(ProfileState(status: ProfileStatus.logout));
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          Routes.loginscreen,
-          (route) => false,
-        );
       },
     );
   }
