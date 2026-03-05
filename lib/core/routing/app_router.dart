@@ -7,7 +7,7 @@ import 'package:coureses_platform/features/layout/presentation/screens/splash_sc
 import 'package:coureses_platform/features/course_details/presentation/screens/course_details.dart';
 import 'package:coureses_platform/core/models/course_model.dart';
 import 'package:coureses_platform/features/home/presentation/screens/home.dart';
-import 'package:coureses_platform/features/layout/presentation/screens/layout_bottom_navbar.dart';
+import 'package:coureses_platform/features/layout/presentation/screens/layout.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {

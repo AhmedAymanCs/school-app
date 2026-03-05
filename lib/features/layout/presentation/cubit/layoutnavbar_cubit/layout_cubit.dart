@@ -2,6 +2,7 @@ import 'package:coureses_platform/core/constants/app_constants.dart';
 import 'package:coureses_platform/features/home/presentation/screens/home.dart';
 import 'package:coureses_platform/features/layout/presentation/cubit/layoutnavbar_cubit/layout_state.dart';
 import 'package:coureses_platform/features/my_courses/presentation/my_courses_screen.dart';
+import 'package:coureses_platform/features/profile/presentation/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,7 +11,7 @@ class LayoutCubit extends Cubit<LayoutBottomNavBarState> {
   LayoutCubit() : super(InitialBottomNavIndex());
 
   int currentIndex = 0;
-  List<Widget> screens = [Home(), MyCoursesPage()];
+  List<Widget> screens = [Home(), MyCoursesPage(), ProfilePage()];
 
   void changeIndex(int index) {
     currentIndex = index;
