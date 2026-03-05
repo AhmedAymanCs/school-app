@@ -18,6 +18,7 @@ class TopScreen extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
+            SizedBox(height: 50),
             Padding(
               padding: const EdgeInsets.only(top: 8, bottom: 10),
               child: Text('Courses App', style: AppTextStyles.mains30regular),

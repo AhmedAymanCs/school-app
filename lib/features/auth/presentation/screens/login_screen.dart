@@ -116,12 +116,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                     }
                                   },
                                 ),
-                          SizedBox(height: 20),
-                          TextButton(
+                          SizedBox(height: 100),
+                          CustomButton(
+                            text: 'SignUp',
                             onPressed: () {
                               Navigator.pushNamed(context, Routes.signupscreen);
                             },
-                            child: Text('SignUp'),
                           ),
                         ],
                       ),
